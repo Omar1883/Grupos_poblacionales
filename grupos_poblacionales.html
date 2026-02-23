@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pobreza por grupos poblacionales</title>
+
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script>
+google.charts.load('current', {packages:['corechart']});
+google.charts.setOnLoadCallback(drawAll);
+
+function drawAll() {
+  drawLengua();
+  drawSexo();
+  drawEdad();
+}
+
+function drawLengua() {
+  var data = google.visualization.arrayToDataTable([
+    ['Año', 'Hablante indígena', 'No hablante indígena'],
+    ['2008', 76.0, 41.4],
+    ['2018', 74.9, 39.4]
+  ]);
+
+  var options = {
+    title: 'Lengua (2008 vs 2018)',
+    pointSize: 8,
+    lineWidth: 3,
+    legend: { position: 'top' },
+    vAxis: { title: 'Pobreza (%)' }
+  };
+
+  var chart = new google.visualization.LineChart(
+    document.getElementById('lengua')
+  );
+
+  chart.draw(data, options);
+}
+
+function drawSexo() {
+  var data = google.visualization.arrayToDataTable([
+    ['Año', 'Mujeres', 'Hombres'],
+    ['2008', 44.6, 44.0],
+    ['2018', 42.4, 41.4]
+  ]);
+
+  var options = {
+    title: 'Sexo (2008 vs 2018)',
+    pointSize: 8,
+    lineWidth: 3,
+    legend: { position: 'top' },
+    vAxis: { title: 'Pobreza (%)' }
+  };
+
+  var chart = new google.visualization.LineChart(
+    document.getElementById('sexo')
+  );
+
+  chart.draw(data, options);
+}
+
+function drawEdad() {
+  var data = google.visualization.arrayToDataTable([
+    ['Año', '<18 años', '12-29 años', '65+ años'],
+    ['2008', 53.3, 43.0, 44.9],
+    ['2018', 49.6, 42.4, 41.1]
+  ]);
+
+  var options = {
+    title: 'Edad (2008 vs 2018)',
+    pointSize: 8,
+    lineWidth: 3,
+    legend: { position: 'top' },
+    vAxis: { title: 'Pobreza (%)' }
+  };
+
+  var chart = new google.visualization.LineChart(
+    document.getElementById('edad')
+  );
+
+  chart.draw(data, options);
+}
+</script>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 20px;">
+
+<h2>5) Pobreza por grupos poblacionales</h2>
+
+<div id="lengua" style="width:100%; max-width:900px; height:350px;"></div>
+<br>
+<div id="sexo" style="width:100%; max-width:900px; height:350px;"></div>
+<br>
+<div id="edad" style="width:100%; max-width:900px; height:350px;"></div>
+
+</body>
+</html>
